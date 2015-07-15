@@ -1,0 +1,61 @@
+<!doctype html> 
+<html>
+<head>
+	<title>Group challenge</title>
+</head>
+<body>
+	<script>
+		var arrayAtticus = ["Atticus", "2405", "47000", 3];
+		var arrayJem = ["Jem", "62347", "63500", 4];
+		var arrayBoo = ["Boo", "11435", "54000", 3];
+		var arrayScout = ["Scout", "6243", "74750", 5];
+		function buildEmployee(employee) {
+			employee[2] = parseInt(employee[2]);
+			var bonusMod = 0;
+
+			switch(employee[3]) {
+				case 5:
+					bonusMod += .1;
+
+					break;
+				case 4:
+					bonusMod += .06;
+					break;
+
+				case 3:
+					bonusMod += .04;
+					break;
+			}
+
+			if (employee[1].length<5) {
+				bonusMod+=.05;
+
+			}
+			if (employee[2]>65000) {
+				bonusMod-=.01;
+			}
+
+			if (bonusMod>.13) {
+				bonusMod=.13;
+			}
+
+			var bonus = bonusMod * employee[2];
+
+			var updatedEmployee = [
+				employee[0],
+				bonusMod,
+				employee[2] + bonus,
+				Math.ceil(bonus)
+			];
+			console.log(updatedEmployee);
+			return updatedEmployee;
+		}
+
+		buildEmployee(arrayAtticus);
+		buildEmployee(arrayScout);
+		buildEmployee(arrayBoo);
+		buildEmployee(arrayJem);
+
+	</script>
+</body>
+</html>
